@@ -1,0 +1,55 @@
+<repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
+  <name>HabitStrengthPerActvityPerAgentPerTick</name>
+  <type>NON_AGGREGATE</type>
+  <sourceType>Agent</sourceType>
+  <inclTick>true</inclTick>
+  <inclBatchRun>true</inclBatchRun>
+  <inclRandomSeed>true</inclRandomSeed>
+  <scheduleParams>
+    <start>1.0</start>
+    <interval>1.0</interval>
+    <priority>-Infinity</priority>
+    <pType>LAST</pType>
+    <duration>-1.0</duration>
+    <frequency>REPEAT</frequency>
+    <hashCode>90577310</hashCode>
+  </scheduleParams>
+  <atEnd>false</atEnd>
+  <methodDataSources class="linked-hash-map">
+    <entry>
+      <string>RideBikeHabitStrength</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>RideBikeHabitStrength</id>
+        <className>Agent</className>
+        <methodName>getRideBikeHabitStrength</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>TakeCarHabitStrength</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>TakeCarHabitStrength</id>
+        <className>Agent</className>
+        <methodName>getTakeCarHabitStrength</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>WalkHabitStrength</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>WalkHabitStrength</id>
+        <className>Agent</className>
+        <methodName>getWalkHabitStrength</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>ID</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>ID</id>
+        <className>Agent</className>
+        <methodName>getID</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+  </methodDataSources>
+  <countSources class="linked-hash-map"/>
+  <customNADataSources class="linked-hash-map"/>
+  <customAggDataSources class="linked-hash-map"/>
+</repast.simphony.data2.engine.DataSetDescriptor>

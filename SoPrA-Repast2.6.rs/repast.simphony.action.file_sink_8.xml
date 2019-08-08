@@ -1,0 +1,15 @@
+<repast.simphony.data2.engine.FileSinkDescriptor simphonyVersion="2.6.0">
+  <name>ChosenMode</name>
+  <dataSet>ChosenMode</dataSet>
+  <delimiter>,</delimiter>
+  <format>TABULAR</format>
+  <sourceIds class="linked-hash-set">
+    <string>run</string>
+    <string>random_seed</string>
+    <string>tick</string>
+    <string>ID</string>
+    <string>ChosenMode</string>
+  </sourceIds>
+  <fileName>ChosenMode.txt</fileName>
+  <addTimeStamp>true</addTimeStamp>
+</repast.simphony.data2.engine.FileSinkDescriptor>
