@@ -1329,39 +1329,6 @@ habit-threshold
 NIL
 HORIZONTAL
 
-INPUTBOX
-22
-794
-292
-1114
-breed-instances
-activity  Commuting\nactivity  Non-Car Commuting\nactivity  Car Commuting\nactivity  Bring Kids to School\nactivity  Go To Work\nactivity  Take Train To School\nactivity  Ride Bike To School\nactivity  Walk To School\nactivity  Take Train To Work\nactivity  Ride Bike To Work\nactivity  Walk To Work\nactivity  Bring Kids to School (CC)\nactivity  Go To Work (CC)\nactivity  Drive Car To School\nactivity  Drive Car To Work\nvalue  Comfort\nvalue  Environment\nlocation  Home
-1
-1
-String
-
-INPUTBOX
-308
-793
-490
-962
-implementation-instances
-Car Commuting 1\nNon-Car Commuting 1\nBring Kids To School With Car 1\nGo to Work with Car 1\nGo To Work 1\nGo To Work With Train 1\nGo To Work With Bike 1
-1
-1
-String
-
-INPUTBOX
-505
-794
-668
-961
-implementation-instances2
-Commuting 1\nCommuting 1\nCar Commuting 1\nCar Commuting 1\nNon-Car Commuting 1\nGo to Work 1\nGo to Work 1
-1
-1
-String
-
 SLIDER
 28
 196
@@ -1445,10 +1412,10 @@ PENS
 "default" 1.0 0 -16777216 true "" "histogram [strength] of habitual-triggers"
 
 SWITCH
-370
-710
-481
-743
+1114
+68
+1225
+101
 transcribe
 transcribe
 1
