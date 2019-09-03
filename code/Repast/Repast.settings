@@ -1,0 +1,23 @@
+<simphony.settings.SettingsRegistry serialization="custom">
+  <unserializable-parents/>
+  <hashtable>
+    <default>
+      <loadFactor>0.75</loadFactor>
+      <threshold>8</threshold>
+    </default>
+    <int>11</int>
+    <int>6</int>
+    <string>SettingsRegistryId</string>
+    <string>Repast.registry</string>
+    <string>RStudio.home.2.6.0</string>
+    <string>C:\Program Files\RStudio\bin\rstudio.exe</string>
+    <string>RStudio.home</string>
+    <string>C:\Program Files\RStudio\bin\rstudio.exe</string>
+    <string>LastLoadedScenario</string>
+    <string>C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\SoPrA-Repast2.6.rs</string>
+    <string>SettingsFileName</string>
+    <string>Repast.settings</string>
+    <string>RStudio.licenseAccepted</string>
+    <boolean>true</boolean>
+  </hashtable>
+</simphony.settings.SettingsRegistry>

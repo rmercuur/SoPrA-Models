@@ -1,0 +1,1 @@
+This is the SoPrA-Repast2.6 model. Please contact the developers for more information.

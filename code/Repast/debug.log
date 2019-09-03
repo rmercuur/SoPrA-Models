@@ -1,0 +1,118 @@
+INFO  [Thread-0] 2019-04-25 13:13:33,399 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 13:13:33,399 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 13:13:33,399 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [pool-3-thread-1] 2019-04-25 13:14:16,574 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556190775274 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:14:16,574 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1.2545
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:14:16,636 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556190775274
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:14:16,652 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/Rijk/eclipse-workspace/SoPrA-Repast2.6/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:14:18,341 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0.0294
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:14:18,341 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1.3850
+INFO  [AWT-EventQueue-0] 2019-04-25 13:23:40,691 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\output\config.props
+INFO  [AWT-EventQueue-0] 2019-04-25 13:23:40,876 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\batch\batch_params.xml to
+	C:\Users\Rijk\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:24:33,362 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Rijk\AppData\Local\Temp\Rijk_localhost15585526056213787720.zip to 
+C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556191468135 ...
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:24:33,416 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:24:33,416 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0.0880
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:24:33,416 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556191468135\Rijk_localhost15585526056213787720.zip
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:24:48,426 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2019-04-25 13:25:04,582 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-04-25 13:25:04,582 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Rijk/AppData/Local/Temp/simphony_model_1556191468135/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-04-25 13:25:04,582 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 13:25:04,582 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 13:25:04,582 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2019-04-25 13:25:04,645 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-04-25 13:25:04,645 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Rijk/AppData/Local/Temp/simphony_model_1556191468135/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-04-25 13:25:04,645 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 13:25:04,645 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 13:25:04,645 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [pool-3-thread-1] 2019-04-25 13:25:48,442 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556191468135 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:25:48,442 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1.2504
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:25:48,505 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556191468135
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:25:48,552 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/Rijk/eclipse-workspace/SoPrA-Repast2.6/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:25:49,800 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0.0226
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:25:49,800 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1.3616
+INFO  [AWT-EventQueue-0] 2019-04-25 13:42:43,968 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\output\config.props
+INFO  [AWT-EventQueue-0] 2019-04-25 13:42:44,199 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\batch\batch_params.xml to
+	C:\Users\Rijk\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:44:08,728 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Rijk\AppData\Local\Temp\Rijk_localhost4711381122130541576.zip to 
+C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556192643810 ...
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:44:08,875 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:44:08,875 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0.0844
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:44:08,875 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556192643810\Rijk_localhost4711381122130541576.zip
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:44:24,241 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2019-04-25 13:44:39,549 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-04-25 13:44:39,549 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Rijk/AppData/Local/Temp/simphony_model_1556192643810/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-04-25 13:44:39,549 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 13:44:39,549 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 13:44:39,549 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2019-04-25 13:44:39,665 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-04-25 13:44:39,665 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Rijk/AppData/Local/Temp/simphony_model_1556192643810/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-04-25 13:44:39,665 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 13:44:39,665 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 13:44:39,665 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [pool-3-thread-1] 2019-04-25 13:45:24,260 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556192643810 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:45:24,260 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1.2564
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:45:24,303 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556192643810
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:45:24,318 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/Rijk/eclipse-workspace/SoPrA-Repast2.6/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:45:25,846 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0.0264
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 13:45:25,846 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1.3678
+INFO  [AWT-EventQueue-0] 2019-04-25 14:02:02,361 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\output\config.props
+INFO  [AWT-EventQueue-0] 2019-04-25 14:02:02,564 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\batch\batch_params.xml to
+	C:\Users\Rijk\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:02:46,532 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Rijk\AppData\Local\Temp\Rijk_localhost13313916318226817794.zip to 
+C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556193761575 ...
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:02:46,579 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:02:46,579 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0.0834
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:02:46,579 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556193761575\Rijk_localhost13313916318226817794.zip
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:03:00,595 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2019-04-25 14:03:15,859 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-04-25 14:03:15,859 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Rijk/AppData/Local/Temp/simphony_model_1556193761575/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-04-25 14:03:15,859 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 14:03:15,859 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 14:03:15,859 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2019-04-25 14:03:16,047 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-04-25 14:03:16,047 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Rijk/AppData/Local/Temp/simphony_model_1556193761575/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-04-25 14:03:16,047 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 14:03:16,047 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 14:03:16,047 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [pool-3-thread-1] 2019-04-25 14:04:00,596 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556193761575 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:04:00,596 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1.2336
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:04:00,627 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556193761575
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:04:00,643 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/Rijk/eclipse-workspace/SoPrA-Repast2.6/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:04:01,843 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0.0208
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:04:01,843 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1.3381
+INFO  [AWT-EventQueue-0] 2019-04-25 14:58:55,427 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\output\config.props
+INFO  [AWT-EventQueue-0] 2019-04-25 14:58:55,631 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	C:\Users\Rijk\eclipse-workspace\SoPrA-Repast2.6\batch\batch_params.xml to
+	C:\Users\Rijk\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:59:38,959 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Rijk\AppData\Local\Temp\Rijk_localhost13100991734935502127.zip to 
+C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556197173748 ...
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:59:39,022 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:59:39,022 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0.0879
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:59:39,022 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556197173748\Rijk_localhost13100991734935502127.zip
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 14:59:53,029 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2019-04-25 15:00:08,175 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-04-25 15:00:08,175 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Rijk/AppData/Local/Temp/simphony_model_1556197173748/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-04-25 15:00:08,175 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 15:00:08,175 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 15:00:08,175 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2019-04-25 15:00:08,591 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-04-25 15:00:08,591 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Rijk/AppData/Local/Temp/simphony_model_1556197173748/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-04-25 15:00:08,591 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-04-25 15:00:08,591 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-04-25 15:00:08,591 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [pool-3-thread-1] 2019-04-25 15:00:53,058 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556197173748 for DONE:  no
+INFO  [pool-3-thread-1] 2019-04-25 15:01:53,058 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556197173748 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 15:01:53,059 repast.simphony.batch.ssh.SessionsDriver - Run Time: 2.2340
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 15:01:53,135 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Rijk\AppData\Local\Temp\simphony_model_1556197173748
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 15:01:53,182 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into C:/Users/Rijk/eclipse-workspace/SoPrA-Repast2.6/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 15:02:06,019 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0.2160
+INFO  [SwingWorker-pool-2-thread-1] 2019-04-25 15:02:06,019 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 2.5389

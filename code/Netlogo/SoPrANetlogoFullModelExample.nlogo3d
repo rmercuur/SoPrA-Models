@@ -1,0 +1,1929 @@
+extensions [csv table]
+
+globals [
+  agent-list
+
+  ;for unit-testing
+  test-amount-of-context-elements
+  test-filter-on-pc
+  test-filter-on-trigger
+  test-choose-individualistic
+]
+
+;classes
+breed [activities activity]
+breed [values value]
+breed [resources resource]
+breed [locations location]
+breed [actors actor]
+breed [competences competence]
+
+
+turtles-own [name]
+activities-own [category owner enacted]
+actors-own [habit-rate chosen-action type-of-choice]
+;context-elements-own [category chosen-action]
+
+
+;assocations
+undirected-link-breed [sames same]
+directed-link-breed [implementations implementation]
+directed-link-breed [beliefs belief]
+directed-link-breed [related-values related-value]
+directed-link-breed [habitual-triggers habitual-trigger]
+directed-link-breed [adhered-values adhered-value]
+directed-link-breed [owned-context-elements owned-context-element]
+
+directed-link-breed [has-competences has-competence] ;optional
+directed-link-breed [affordances affordance] ;optional
+directed-link-breed [required-competences required-competence] ;optional
+undirected-link-breed [shares-context share-context] ;for implementation purposes
+
+
+implementations-own [categoryI]
+beliefs-own [personal-strength shared-strength]
+related-values-own [strength]
+habitual-triggers-own [strength]
+adhered-values-own [strength]
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;set-up and lay-out;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                                                     ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;General set-up function
+to setup
+    clear-all
+    setup-globals
+    setup-family
+    setup-habitual-triggers
+    personalize-agents
+    setup-layout
+    reset-ticks
+end
+
+to setup-globals
+  setup-values
+  setup-global-locations-resources
+end
+
+to setup-values
+  let instance-list csv:from-file "Input/Case 2 in Netlogo - Values.csv"
+  foreach instance-list
+  [x -> crt 1 [set breed values set name item 0 x]]
+end
+
+to setup-global-locations-resources ;for now only has locations
+  let instance-list csv:from-file "Input/Case 2 in Netlogo - Locations And Resources.csv"
+
+  ;create type of location
+  foreach instance-list
+  [x -> crt 1 [set breed locations set name item 0 x]] ;x here is a list
+
+  let work-locations (amount-of-turtles / 3)
+  ask one-of locations with [name = "Work"][
+    foreach range work-locations [x -> hatch 1 [set name (word "Work" x)]]
+  ]
+
+  let school-locations (amount-of-turtles / 3)
+  ask one-of locations with [name = "School"][
+    foreach range school-locations [x -> hatch 1 [set name (word "School" x)]]
+  ]
+end
+
+to setup-family
+  repeat amount-of-families [
+    let family []
+    set family setup-agents family ;also adds the agent to the list
+    setup-family-resources family
+  ]
+end
+
+;Sets up an agent with an activity tree, personal resources (e.g., bike, rain clothes) and adding it to a family
+;
+;Args:
+; my-family  a list of agents representing the family the agent should be added to
+;
+;Output:
+; a list with the input family and the agent added
+to-report setup-agents [my-family]
+  create-actors agents-per-family [
+    setup-activity-tree
+    setup-personal-resources
+    set my-family lput self my-family
+  ]
+  report my-family
+end
+
+;Sets Up an actity tree using a list of activities, implementation relations and associating them to each value. setting activity type
+to setup-activity-tree ;turtle-context
+  ;setup activities and beliefs
+  let actor-id who
+  let activity-list csv:from-file "Input/Case 2 in Netlogo - Activities.csv"
+  foreach activity-list
+  [x -> hatch 1 [
+    set breed activities set name (word item 0 x actor-id) ;item 0 = e.g. Car-Commuting, who = e.g. 1
+    create-belief-from myself ;myself refers to the agent
+    create-related-values-to values
+    ]
+  ]
+
+  ;setup implementations
+  let implementations-list csv:from-file "Input/Case 2 in Netlogo - Implementation.csv"
+  foreach implementations-list
+  [x ->
+    ask one-of turtles with [name = (word item 0 x actor-id)][ ;the who makes sures its this turtles
+      create-implementation-to
+      one-of turtles with [name = (word item 1 x actor-id)]
+     ]
+  ]
+
+  ;set activity-type
+  ask activities [
+    if (count my-out-implementations = 0) [set category "Top Action"]
+    if (count my-in-implementations = 0) [set category "Action"]
+    if (not (category = "Action" or category = "Top Action")) [set category "Abstract Action"]
+  ]
+end
+
+;Sets up personal resources such as your own bike or rain clothes
+to setup-personal-resources ;turtle-context
+  let pr-list csv:from-file "Input/Case 2 in Netlogo - Personal Resources.csv"
+  foreach pr-list
+  [x -> hatch 1 [
+    set breed resources set name (word item 0 x who)
+    create-owned-context-element-from myself
+    ]
+  ]
+end
+
+;Sets up family resources like home or a shared car
+;Also puts everyone in one performance context
+to setup-family-resources [my-family] ;observer-context
+  ;create a home
+  let my-home 0 ;empty instantiation
+
+  create-locations 1 [
+    set name (word "Home" who)
+    create-owned-context-elements-from turtle-set my-family
+    create-shares-context-with turtle-set my-family
+    set my-home self
+  ]
+
+  ;create other resources
+  let family-resource-list csv:from-file "Input/Case 2 in Netlogo - Family Resources.csv"
+  foreach family-resource-list
+  [x -> crt 1 [
+    set breed resources set name (word item 0 x who)
+    create-owned-context-elements-from turtle-set my-family
+    create-share-context-with my-home
+    ]
+  ]
+end
+
+;Sets up habitual trigger assocations between each activity each agent, location, resource and activity
+to setup-habitual-triggers
+  ask activities [
+    create-habitual-triggers-to other context-elements [
+      set strength 0.5;
+    ]
+  ]
+end
+
+to personalize-agents
+  ;setup values
+  ask actors [
+    ask belief-neighbors [ ;my-activities
+      ask my-out-related-values [
+        set strength random-float 1
+      ]
+    ]
+  ]
+  ;adhered values
+  ask actors [
+    create-adhered-values-to values [
+      set strength (max list (min list (random-normal 1 0.25) 1) 0)
+    ]
+  ]
+
+  ;habitrate
+
+  ask actors [
+    set habit-rate (max list (min list (random-normal habit-rate-mu habit-rate-sd ) 1) 0)
+  ]
+end
+
+to setup-agent-links
+  ask actors [
+    create-has-competences-to n-of (random (count competences + 1)) competences
+    create-adhered-values-to n-of (random (count values + 1)) values [
+      set strength (random-float 2) - 1
+    ]
+  ]
+end
+
+;Sets Up the lay-out (shapes, colours and arrangement) one-time
+to setup-layout
+  ifelse layout
+  [
+    ;shapes
+    ;classes
+    set-default-shape activities "arrow"
+    set-default-shape competences "star"
+    set-default-shape values "flag"
+    set-default-shape resources"tree"
+
+    ;links
+    set-default-shape implementations "imp"
+    set-default-shape beliefs "bel"
+    set-default-shape has-competences "agent-link"
+    set-default-shape adhered-values "agent-link"
+    set-default-shape affordances "sp-link"
+    set-default-shape required-competences "sp-link"
+    set-default-shape related-values "sp-link"
+    set-default-shape habitual-triggers "sp-link"
+
+    ;colours
+    ;classes
+    ask activities [set color red]
+    ;ask physical-context-elements [set color white]
+    ask values [set color blue]
+    ask competences [set color yellow]
+    ask actors [set shape "person"]
+
+    ;links
+    ask implementations [set color red]
+
+    ;hide
+    ask beliefs [hide-link]
+    ask habitual-triggers [hide-link]
+
+    ;lay-out
+    ifelse three-dimensional
+    [repeat 30 [ layout-spring turtles links link-resistance-to-change max-link-length nodes-repel-strength ]]
+    [repeat 10 [layout-tutte activities links 12]
+      layout-circle activities 6]
+  ]
+   [
+    ask turtles [hide-turtle]
+    ask links [hide-link]
+  ]
+end
+
+;Repeated update for the lay-out (thickness, colour depending on enactment)
+to layout-update
+  ifelse layout [
+    ask activities [
+      ifelse enacted
+      [set color green
+        ask my-links [set color green]]
+      [set color red
+        ask my-links [set color red]]
+    ]
+    ;thickness
+    ask implementations [set thickness 0.5]
+    ask related-values [set thickness strength / 4]
+    ask habitual-triggers [set thickness strength / 4]
+    ask adhered-values [set thickness strength / 4]
+  ]
+  [
+  ]
+end
+
+to setup-social-practices
+  ;create-social-practice turtle 1
+  foreach agent-list create-general-social-practice
+  ask actors [personalize-social-practice]
+end
+
+;creates a general social practice for one agent
+;attributes no strength to HabitualTrigger assocation
+;creates only one SP-tree, with one implementation per activity, and relates all agents to it
+;
+;Input:
+; my-owner agent for who the SP is made
+to create-general-social-practice [my-owner]
+  file-open "Social Practice Elements - Sheet2.tsv"
+  let first-line file-read-line
+  while [not file-at-end?] [
+    let target "null"
+    let next-string "null"
+
+    ;make a new activity
+    set next-string file-read
+    let current-activity one-of activities with [name = next-string and owner = my-owner]
+    if current-activity = nobody [
+      create-activities 1 [
+        set name next-string
+        set owner my-owner
+        create-belief-from my-owner
+        set current-activity self
+      ]
+    ]
+   ; if debug-mode [write my-owner write current-activity show [name] of current-activity] ;debug
+
+
+    ;set category
+    set next-string file-read
+    if next-string != "null" [ask current-activity [set category next-string]]
+
+    ;create context-elements, competences and values and set-up links
+    ;create context-element and affordance
+    set next-string file-read
+    let next-string-category file-read
+    if next-string != "null" [
+      set target one-of resources with [name = next-string]
+    ; if debug-mode [write target ] ;debug
+      if target = nobody [
+        create-resources 1 [
+          set name next-string
+          set target self
+         ; set category next-string-category- this is null anyway so can be dropped
+        ]
+      ]
+      ask current-activity [create-affordance-to target]
+    ]
+
+    ;create competence and required-competence
+    set next-string file-read
+    if next-string != "null" [
+      set target one-of competences with [name = next-string]
+      if target = nobody [
+        create-competences 1 [
+          set name next-string
+          set target self
+        ]
+      ]
+      ask current-activity [create-required-competence-to target]
+    ]
+
+    ;create value and related-value
+    set next-string file-read
+    ifelse next-string != "null"
+      [set target one-of values with [name = next-string]
+        if target = nobody [
+          create-values 1 [
+            set name next-string
+            set target self
+          ]
+        ]
+        ask current-activity [
+          create-related-value-to target[
+            set strength read-from-string file-read
+          ]
+        ]
+      ]
+      [let skipstrength file-read];skip the strength
+
+
+
+    ;create implementation relation
+    let implements-string file-read
+    let categoryI-string file-read
+    if implements-string != "null" [
+      set target one-of activities with [name = implements-string and owner = my-owner]
+      if target = nobody [
+        create-activities 1 [
+          set name implements-string
+          set target self
+          set owner my-owner
+          create-belief-from my-owner
+        ]
+      ]
+      ask current-activity [create-implementation-to target
+        [set categoryI categoryI-string]
+      ]
+    ]
+  ]
+  file-close
+
+  ;create other links to values
+  ask activities with [category = "Action"][
+    ask values [
+      if  not related-value-neighbor? myself [
+  ;      if debug-mode [show self print myself] ;debug
+        create-related-value-from myself [set strength 0]
+      ]
+    ]
+  ]
+
+  ;create habitual links without any strength
+  ask activities [create-habitual-triggers-to other context-elements [set strength 0]] ;cannot create link to itself in Netlogo thus 'other'
+
+  ;inheritance of affordances, competences and values
+  ;AA
+  inherit affordances "Abstract Action" my-owner
+  inherit required-competences "Abstract Action" my-owner
+  ;inherit related-values "Abstract Action" my-owner
+  inherit affordances "Top Action" my-owner
+  inherit required-competences "Top Action" my-owner
+
+  ask values[
+    let asking-value self
+    ask activities with [category = "Abstract Action" and owner = my-owner][
+      let strength-list []
+      ask in-implementation-neighbors [
+  ;      if debug-mode [show "link between" show asking-value show self] ;debug
+        set strength-list lput ([strength] of out-related-value-to asking-value) strength-list
+      ]
+      create-related-value-to asking-value [set strength mean strength-list]
+    ]
+  ]
+
+
+  ask values[
+    let asking-value self
+    ask activities with [category = "Top Action" and owner = my-owner][
+      let strength-list []
+      ask in-implementation-neighbors [
+        set strength-list lput ([strength] of out-related-value-to asking-value) strength-list
+      ]
+      create-related-value-to asking-value [set strength mean strength-list]
+    ]
+  ]
+end
+
+;Makes random changes to social practices to acquire heterogeneity
+;turtlecontext
+to personalize-social-practice
+     ask belief-neighbors [
+      ask n-of (random (count my-affordances + 1)) my-affordances [die]
+      ask n-of (random (count my-required-competences + 1)) my-required-competences [die]
+    ask n-of (random (count my-related-values + 1)) my-related-values [set strength strength] ;NB: change later
+      ;could add implementations
+    ]
+end
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Decision-Making;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;                                                                         ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+to go
+  turtles-reset
+  turtles-sense-decide
+  turtles-act
+  turtles-update
+  stats-update
+  layout-update
+  tick
+end
+
+to turtles-reset
+  ask actors [set chosen-action 0]
+end
+
+to turtles-sense-decide
+  ask actors[
+    let chosen-activity my-top-action ;this will allow to set the new activity and iterate from there
+
+    while [not ([category] of chosen-activity =  "Action")][
+      sense chosen-activity
+      set chosen-activity choose-activity chosen-activity ; maybe what we implemented is more a way to choose one AA
+    ]
+
+    ;finalize decision to turtle-owned variable
+    set chosen-action chosen-activity
+  ]
+end
+
+;turtle-contet
+;Updates performance context of the agent by connecting the agent with:
+;-- the activity it has just chosen (the placement in the decision tree)
+;-- possible materials based on that contet
+to sense [activity-context]
+  ask my-shares-context with [[breed] of other-end = activities] [die] ;reset
+  create-share-context-with activity-context ;new
+end
+
+
+to-report choose-activity [current-activity] ;;turtle procedure
+  let candidates activity-children-of current-activity
+  let chosen-activity "null" ;placeholder
+
+  ;pre-conditions
+  ;let candidates-filtered-on-pc filter-on-pc candidates
+
+  ;fast-thinking
+  let candidates-filtered-on-trigger filter-on-trigger candidates
+  let candidates-filtered-on-social filter-on-social candidates
+  set candidates candidates-filtered-on-trigger ;more complex function needed
+
+  ;is slow-thinking needed?
+  let slow-thinking-needed true
+  ifelse count candidates = 1
+   [set chosen-activity one-of candidates ;fast-thinking chose an activity
+    set slow-thinking-needed false
+    set type-of-choice "fast-thinking" ;statistics
+   ]
+   [ifelse count candidates = 0
+    [set candidates activity-children-of current-activity ;ignores fast-thinking
+    ]
+    [set candidates candidates ;do-nothing
+    ]
+    set type-of-choice "slow-thinking"
+  ]
+
+  ;slow-thinking
+  if slow-thinking-needed [
+    ;set chosen-activity one-of candidates ;placeholder
+
+    ;choose individualistic
+    set chosen-activity choose-individualistic candidates
+
+    ;choose socially
+
+  ]
+
+
+  report chosen-activity
+end
+
+;Filters a set of candidate activities by comparing the competences required to the competences an agent has
+;
+;Args:
+;  candidates - a set of candidate activity
+;
+;Output:
+;  new-candiates - a set of candidates filtered om competences
+to-report filter-on-pc [candidates] ;;turtle procedure
+  let agent-competences has-competence-neighbors
+  let new-candidates
+   candidates with
+    [is-subset required-competence-neighbors agent-competences]
+
+;  show new-candidates
+;  show [name] of has-competence-neighbors
+;  ask turtle-set candidates[
+;    show [name] of required-competence-neighbors
+;    show subset required-competence-neighbors agent-competences
+;    ]
+;  show new-candidates
+  report new-candidates
+end
+
+;Filters a set of candidate activities on those that are triggered
+;by calculating the habit-strength of the activity-performance context and comparing it to a threshold
+;
+;Args:
+;  candidates - set of activities that are to be filtered
+to-report filter-on-trigger [candidates] ;;turtle procedure
+  let habit-threshold-agent habit-threshold
+  let pc-of-agent my-performance-context
+  let new-candidates
+  candidates with
+  [(habit-strength self pc-of-agent) > habit-threshold-agent] ;applies reporter to self and context-elements that share a context
+  if transcribe [show "I selected the following candidates based on habit-strength:" print [name] of candidates]
+  report new-candidates
+end
+
+;Reports the average of strengths of all habittrigger relations between an activity and context-elements in the performance context
+;Args:
+;  this-activity - one activity
+;  this-context-elements - all context-elements in the performance context of the activity
+to-report habit-strength [this-activity this-context-elements]
+  let total-strength 0
+  let average-strength 0
+  ;show this-activity
+  ;show this-context-elements
+  ask this-context-elements [
+    if(debug-mode) [show [name] of self show [name] of this-activity]
+    set total-strength total-strength + [strength] of habitual-trigger-with this-activity
+
+    if(debug-mode)[
+      show [strength] of habitual-trigger-with this-activity
+      show total-strength
+    ]
+  ]
+  ifelse (count this-context-elements > 0)
+  [set average-strength (total-strength / count this-context-elements)]
+  [set average-strength 0]
+  report average-strength
+end
+
+to-report filter-on-social [candidates]
+  ;ask turtles in pc what they have chosen
+  let action-list [chosen-action] of my-performance-context with [breed = actors]
+  show action-list
+  set action-list filter [x -> x != 0] action-list
+  show action-list
+  if (not empty? action-list)[
+    let one-activity-list [chosen-activities] of item 0 action-list
+    show one-activity-list
+    let activity-list map [x -> [chosen-activities] of x] action-list
+    show activity-list
+    set activity-list reduce sentence activity-list
+    show activity-list
+    let interpreted-action-list map [x -> ifelse-value (x = 0) [x][[purename] of x]] activity-list
+    show interpreted-action-list
+    let candidate-only-list filter [x -> member? x [purename] of candidates] interpreted-action-list
+    show "candidates" print [purename] of candidates
+    show "final list:" print candidate-only-list
+     let occurance-table table:counts candidate-only-list
+    show occurance-table
+  ]
+
+  ;1: they have never chosen
+  ;2: they have not chosen yet this round
+  ;3: they have chosen something
+  ;; for each candidate save how many have chosen that
+
+  ;; calculate percentages
+
+  ;give the candidates
+  ;; back that are above a certain level
+  ;; the max one back
+  report candidates
+end
+;Choses an activity from a list of candidates based on personal values
+to-report choose-individualistic [candidates]
+  report max-one-of candidates [candidate-rating] ;reports the candidate with the highest rating
+end
+
+to-report candidate-rating ;activity-only
+  let rating 0
+  ask values [
+    set rating rating + value-rating myself self ;myself = candidate, self= value
+  ]
+  report rating
+end
+
+;Could be agentspecific, but now because a belief is specific to the agent its easier
+to-report value-rating [this-activity this-value]
+  let related-value-strength [strength] of (related-value [who] of this-activity [who] of this-value) ;possibly need to use who's
+  let relevant-actor one-of [belief-neighbors] of this-activity ;should be the believing agent
+  let adhered-value-strength [strength] of (adhered-value [who] of relevant-actor [who] of this-value)
+  report related-value-strength * adhered-value-strength
+end
+
+to turtles-act
+  ask activities [set enacted false] ;right place?
+
+  ask actors [
+    ask chosen-action [
+      set enacted true
+    ]
+  ]
+
+;  ask activities [set enacted false]
+;  ask n-of (random (count activities with [category = "Action"] + 1))
+;  activities with [category = "Action"][
+;    set enacted true
+;  ]
+end
+
+to turtles-update
+  update-enactment-inheritance
+  update-personal
+  update-social
+end
+
+;;Updates the activities such that if all children are enacted then the parent is enacted
+;
+; TO DO: implement for categoryI = partOf and categoryI = allOf difference
+to update-enactment-inheritance
+  ask activities with [not (category ="Action")][
+    if any? in-implementation-neighbors with [enacted] [set enacted true]
+  ]
+;
+;    ask activities with [category ="Abstract Action"][
+;    if any?
+;        (turtle-set
+;        ([other-end] of
+;         my-out-implementations )) ;with partof
+;        with [enacted]
+;    [set enacted true]
+;  ]
+;
+;  ask activities with [category ="Top Action"][
+;      if any?
+;        (turtle-set
+;        ([other-end] of
+;         my-out-implementations)) ;with allof
+;        with [enacted]
+;    [set enacted true]
+;  ]
+end
+
+to update-personal
+  update-personal-habitual-triggers
+end
+
+; Updates Habitual Triggers
+; if enacted increase strength with current PC
+; if not enacteed decrease strength with current PC
+to update-personal-habitual-triggers
+  ask actors [
+    let actor-habit-rate habit-rate
+    let actor-performance-context my-performance-context
+    ask my-activities [ ;TODO my-personal-activities?
+      ifelse enacted
+        [ ask my-out-habitual-triggers with [other-end = one-of actor-performance-context] [ ;subset of habitualtriggers which relate to performance-context
+          if(transcribe) [show (word "Habitual Trigger between" myself "and" other-end "is updating from" strength "to") ]
+        set strength (((1 - actor-habit-rate) * strength) + (actor-habit-rate * 1)); (1- alpha) * old + (alpha * new)
+        ;show strength
+          if(transcribe) [show actor-habit-rate show strength]
+          ]
+        ]; else ->
+        [ ask my-out-habitual-triggers with [other-end = one-of actor-performance-context] [
+        if(habits-decrease) [ set strength (((1 - actor-habit-rate) * strength) + (actor-habit-rate * 0))]
+        ;show "not enacted"
+          ]
+        ]
+    ]
+  ]
+end
+
+to update-social
+end
+
+to stats-update
+end
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Utility Functions;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;NB: For time-complexity it might be better to store it as a path and retrieve it as an action
+;reports lists of activities chosen
+to-report chosen-activities ;chosen-action context
+  let chosen-activity-list []
+  let one-activity self;
+  while [not ([category] of one-activity = "Top Action")][
+    set chosen-activity-list lput one-activity chosen-activity-list
+    set one-activity activity-parent-of one-activity
+  ]
+  set chosen-activity-list lput one-activity chosen-activity-list ;one more time
+
+  report reduce sentence chosen-activity-list
+end
+
+to-report my-performance-context
+  report other (turtle-set ([share-context-neighbors] of share-context-neighbors) share-context-neighbors) ;self/(located U location)
+end
+
+;Reports back the Top Action of the agent
+;TODO: generalize if there are multiple representations possible
+to-report my-top-action
+  report one-of my-activities with [category = "Top Action"]
+end
+
+to-report amount-of-turtles
+  report amount-of-families * agents-per-family
+end
+
+to show-namess
+  ask one-of actors[
+    ask out-belief-neighbors[
+      ask my-related-values[
+        print  [name] of other-end write strength
+      ]
+    ]
+  ]
+end
+
+to-report top-actions
+  report activities with [category ="Top Action"]
+end
+
+to-report show-names
+  let thiss []
+  ask one-of related-values with [strength = strength-of-value-link] [set thiss lput [name] of both-ends thiss]
+  report thiss
+end
+
+;reports true if set1 is a subset of set2
+to-report is-subset [set1 set2]
+  let unaccounted-for set1 with [not member? self set2]
+  report not any? unaccounted-for
+end
+
+;reports those that are in set1 but not set2 LIST
+to-report subtract-left-from-right-list [dead-items-list list1]
+  report filter [x -> not member? x dead-items-list] list1
+end
+
+to-report subtract-left-from-right-set [set1 set2]
+  let unaccounted-for set2 with [not member? self set1]
+  report unaccounted-for
+end
+
+to inherit [linkset activitycategory my-owner]
+    ask activities with [category = activitycategory and owner = my-owner][
+    let setmain turtles ;becomes intersection of all neighbors
+      ask in-implementation-neighbors [
+        let other-ends no-turtles
+        ask my-out-links with [member? self linkset] [
+          set other-ends (turtle-set other-ends other-end)
+        ]
+        set setmain setmain with [member? self other-ends]
+      ]
+    create-beliefs-to setmain [
+      set breed linkset
+    ]
+  ]
+end
+
+to-report context-elements
+  report subtract-left-from-right-set values turtles
+end
+
+to-report activity-children-of [parent]
+  report turtle-set [in-implementation-neighbors] of parent
+end
+
+to-report activity-parent-of [child]
+report one-of [out-implementation-neighbors] of child
+end
+;Gives back the first layer of abstract actions
+;
+;Reports:
+;  A turtle-set
+to-report first-layer-aa ;; turtle procedure
+  report turtle-set [implementation-neighbors] of my-top-action ;implementation-neighbors reports an agentset
+end
+
+; something like this could work once, if we understand the run command better
+to inherit2 [linkset]
+    ask activities with [category = "Abstract Action"][
+    let setmain turtles ;becomes intersection of all neighbors
+    let setnew no-turtles
+      ask in-implementation-neighbors [
+      run (word "set setnew out-" linkset "-neighbors")
+      set setmain setmain with [member? self setnew]
+    ]
+    run (word "create-" linkset "s-to" " setmain")
+  ]
+end
+
+to-report my-activities ;turtle-context
+report out-belief-neighbors
+end
+
+;Removes ID numbers from activity names
+to-report purename
+  let my-purename name
+  let number-list "0123456789"
+  while [member? last my-purename number-list] [
+    set my-purename but-last my-purename
+   ; show my-purename
+  ]
+  report my-purename
+end
+;;;;;;;;;;;;;;;Testing;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+to unit-test
+  check-context-elements
+  check-filter-on-pc
+  check-filter-on-trigger
+end
+
+to check-context-elements
+  set test-amount-of-context-elements
+    (count context-elements > 5 and
+    count context-elements < 50)
+end
+
+to check-filter-on-pc
+let test-agent create-test-agent
+ask test-agent[
+  ;test 1: normally everything should go through
+  let candidates first-layer-aa ;find the top-action and choose the layer beneath that
+  let candidates-filtered-on-pc filter-on-pc candidates
+  let test-filter-on-pc1 (candidates-filtered-on-pc = candidates) ;cumulative
+
+  ;test 2. delete driving license, now not everything should go through
+  ask link-with one-of competences with [name = "Driving license"] [die]
+  let candidates2 first-layer-aa ;find the top-action and choose the layer beneath that
+  let candidates-filtered-on-pc2 filter-on-pc candidates2
+  let test-filter-on-pc2 ([name] of candidates-filtered-on-pc2 = ["Non-Car Commuting"])
+
+  if(debug-mode)[
+  ;    show [name] of candidates2
+   ;   show [name] of candidates-filtered-on-pc2
+  ;    show [name] of subtract-left-from-right-set candidates-filtered-on-pc2 candidates2
+  ]
+
+  let testlist list test-filter-on-pc1 test-filter-on-pc2
+  set test-filter-on-pc reduce and testlist ;checks if all are true
+]
+
+  ask test-agent [die] ;else it might interfer with simulation
+end
+
+to check-filter-on-trigger
+  let test-agent create-test-agent
+  let test-filter-on-trigger1 false
+  let test-filter-on-trigger2 false
+
+
+  ;test 1: one CE
+  ask test-agent [ ;a general SP has one activity per bodily movement and associates all CE with the activity
+   ;give every belief personal strenght of one
+   ask my-out-beliefs [
+      set personal-strength 1
+    ]
+    ;ask the habitual trigger between Car Commuting and Car to be 1
+    ask out-belief-neighbors with [name = "Car Commuting"] [
+      ask habitual-trigger-with one-of turtles with [name = "Car"] [
+        set strength 1
+      ]
+    ]
+    create-share-context-with one-of turtles with [name = "Car"]
+  ]
+
+  ask test-agent [
+    let candidates first-layer-aa ;find the top-action and choose the layer beneath that
+    let candidates-filtered-on-trigger filter-on-trigger candidates
+
+    if(debug-mode)[
+      show [name] of candidates
+      show [name] of candidates-filtered-on-trigger
+    ]
+
+   set test-filter-on-trigger1 ([name] of candidates-filtered-on-trigger = ["Car Commuting"])
+  ]
+
+  ;test 2: multiple resources, goes through depending on the threshold
+  ask test-agent [
+    create-share-context-with one-of turtles with [name = "Bicycle"]
+    create-share-context-with one-of turtles with [name = "Home"]
+
+        let candidates first-layer-aa ;find the top-action and choose the layer beneath that
+    let candidates-filtered-on-trigger filter-on-trigger candidates
+
+    if(debug-mode)[
+      show [name] of candidates
+      show [name] of candidates-filtered-on-trigger
+    ]
+
+    set test-filter-on-trigger2 ([name] of candidates-filtered-on-trigger = ["Car Commuting"])
+  ]
+
+  ;test 3:
+  set test-filter-on-trigger (list test-filter-on-trigger1 test-filter-on-trigger2)
+  ask test-agent [die]
+end
+
+to check-choose-individualistic
+  clear-all
+  let test-agent create-test-agent-2
+
+  ask related-value (first [who] of activities with [purename = "Car Commuting"]) (first [who] of values with [name = "Comfort"]) [
+    set strength 1
+  ]
+  ask adhered-value ([who] of test-agent) (first [who] of values with [name = "Comfort"]) [
+    set strength 1
+  ]
+
+  ask test-agent [
+    let candidates activity-children-of my-top-action
+    let chosen-candidate choose-individualistic candidates
+    set test-choose-individualistic ([purename] of chosen-candidate = "Car Commuting")
+  ]
+end
+
+;unit testing
+to-report unit-test2
+  let successes []
+  ;1: check CE (non-agent)
+  set successes lput (count context-elements with [category != "Agent"] > 5 and
+    count context-elements with [category != "Agent"] < 20) successes
+  ;2: check competences
+  set successes lput (count competences > 5 and
+    count competences < 20) successes
+  ;3: check values
+  set successes lput (count values > 5 and
+    count values  < 20) successes
+  ;4: check categoryI
+  set successes lput (count implementations with [categoryI = "All Of"] = count implementations) successes
+  ;5: check category context-elements
+  set successes lput (count context-elements with [category = "Place"]) successes
+  ;6: check related-values
+  set successes lput (count related-values with [strength = 0.25] / count actors) successes
+  ;7: check related-values
+  set successes lput (count related-values with [strength = 1.0] / count actors) successes
+    ;7: check related-values
+  set successes lput (count related-values with [strength = 0.75] = count actors) successes
+  ;8: check top actions
+  set successes lput (count top-actions = count actors) successes
+    ;8: check top actions
+  set successes lput (count top-actions = count actors) successes
+  report successes
+end
+
+to-report create-test-agent-2
+   setup-globals
+
+  ;family of one-agent
+  let placeholder-family []
+  create-actors 1 [
+  setup-activity-tree
+  setup-personal-resources
+  set placeholder-family lput self placeholder-family
+  ]
+
+  setup-family-resources placeholder-family
+
+  ;setup values
+  ask actors [
+    ask belief-neighbors [ ;my-activities
+      ask my-out-related-values [
+        set strength 0
+      ]
+    ]
+  ]
+
+  ;adhered values
+  ask actors [
+    create-adhered-values-to values [
+      set strength 0
+    ]
+  ]
+
+
+  ;habitrate
+  ask actors [
+    set habit-rate (max list (min list (random-normal habit-rate-mu habit-rate-sd ) 1) 0)
+  ]
+
+  report first placeholder-family
+end
+
+;creates a test agent with a general social practice and selected agent elements
+;a general SP has one activity per bodily movement and associates all CE with the activity
+to-report create-test-agent
+  let test-agent one-of context-elements ;temporary placeholder
+  create-actors 1 [
+    set test-agent self
+  ]
+  create-general-social-practice test-agent
+
+  ;create agent assocations
+  ask test-agent [
+    create-has-competences-to competences
+    create-adhered-values-to values [
+      set strength (random-float 2) - 1
+    ]
+  ]
+  report test-agent
+end
+@#$#@#$#@
+GRAPHICS-WINDOW
+0
+0
+1321
+1322
+-1
+-1
+13.0
+1
+10
+1
+1
+1
+0
+1
+1
+1
+-50
+50
+-50
+50
+-50
+50
+1
+0
+1
+ticks
+30.0
+
+BUTTON
+30
+30
+93
+63
+NIL
+setup
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+104
+30
+167
+63
+NIL
+go
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+BUTTON
+178
+30
+241
+63
+NIL
+go
+T
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+SLIDER
+23
+155
+195
+188
+agents-per-family
+agents-per-family
+0
+5
+5.0
+1
+1
+NIL
+HORIZONTAL
+
+SWITCH
+974
+68
+1099
+101
+debug-mode
+debug-mode
+1
+1
+-1000
+
+MONITOR
+975
+285
+1235
+330
+NIL
+unit-test2
+17
+1
+11
+
+INPUTBOX
+27
+82
+162
+151
+strength-of-value-link
+0.0
+1
+0
+Number
+
+SLIDER
+26
+629
+213
+662
+link-resistance-to-change
+link-resistance-to-change
+0
+1
+0.4
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+25
+674
+197
+707
+max-link-length
+max-link-length
+0
+100
+41.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+25
+722
+197
+755
+nodes-repel-strength
+nodes-repel-strength
+0
+100
+26.0
+1
+1
+NIL
+HORIZONTAL
+
+BUTTON
+974
+25
+1080
+58
+Run Unit Test
+unit-test
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+MONITOR
+978
+111
+1174
+156
+Amount Of Context Element Test
+test-amount-of-context-elements
+17
+1
+11
+
+MONITOR
+976
+164
+1080
+209
+Test Filter on PC
+test-filter-on-pc
+17
+1
+11
+
+SWITCH
+26
+587
+180
+620
+three-dimensional
+three-dimensional
+0
+1
+-1000
+
+TEXTBOX
+27
+518
+175
+536
+Layout
+11
+0.0
+1
+
+MONITOR
+978
+224
+1106
+269
+Test Filter on Trigger
+test-filter-on-trigger
+17
+1
+11
+
+SLIDER
+16
+270
+188
+303
+habit-threshold
+habit-threshold
+0
+1
+0.29
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+28
+196
+200
+229
+amount-of-families
+amount-of-families
+0
+5
+2.0
+1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+17
+312
+189
+345
+habit-rate-mu
+habit-rate-mu
+0
+1.0
+0.99
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+19
+349
+191
+382
+habit-rate-sd
+habit-rate-sd
+0
+1
+0.16
+0.01
+1
+NIL
+HORIZONTAL
+
+PLOT
+312
+65
+512
+215
+habit-strength
+tick
+strength
+0.0
+10.0
+0.4
+0.6
+true
+true
+"" ""
+PENS
+"mean" 1.0 0 -16777216 true "" "plot mean [strength] of habitual-triggers"
+"sd" 1.0 0 -7500403 true "" "plot standard-deviation [strength] of habitual-triggers"
+
+PLOT
+557
+59
+903
+288
+Histogram strength
+strength
+turtles
+0.0
+1.0
+0.0
+10.0
+true
+false
+"set-plot-pen-mode 1\nset-plot-x-range 0 1\nset-plot-y-range 0 10\nset-histogram-num-bars 10" ""
+PENS
+"default" 1.0 0 -16777216 true "" "histogram [strength] of habitual-triggers"
+
+SWITCH
+1114
+68
+1225
+101
+transcribe
+transcribe
+1
+1
+-1000
+
+TEXTBOX
+226
+302
+376
+358
+Master Thesis:\nHabit Threshold: 0.6\nHabit-Rate mu: 0.03\nHabit-Rate sd: 0.5
+11
+0.0
+1
+
+PLOT
+563
+303
+904
+552
+Decision Mode Used
+ticks
+#turtles
+0.0
+10.0
+0.0
+10.0
+true
+true
+"" ""
+PENS
+"habitual decision" 1.0 0 -16777216 true "" "plot count actors with [type-of-choice = \"fast-thinking\"]"
+"intentional decision" 1.0 0 -2674135 true "" "plot count actors with [type-of-choice = \"slow-thinking\"]"
+
+SWITCH
+26
+542
+130
+575
+layout
+layout
+1
+1
+-1000
+
+BUTTON
+969
+424
+1151
+457
+NIL
+check-choose-individualistic
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+
+MONITOR
+974
+353
+1129
+398
+NIL
+test-choose-individualistic
+17
+1
+11
+
+SWITCH
+20
+396
+164
+429
+habits-decrease
+habits-decrease
+0
+1
+-1000
+
+@#$#@#$#@
+## WHAT IS IT?
+
+(a general understanding of what the model is trying to show or explain)
+
+## HOW IT WORKS
+
+(what rules the agents use to create the overall behavior of the model)
+
+## HOW TO USE IT
+
+(how to use the model, including a description of each of the items in the Interface tab)
+
+## THINGS TO NOTICE
+
+(suggested things for the user to notice while running the model)
+
+## THINGS TO TRY
+
+(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+
+## EXTENDING THE MODEL
+
+(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+
+## NETLOGO FEATURES
+
+(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+
+## RELATED MODELS
+
+(models in the NetLogo Models Library and elsewhere which are of related interest)
+
+## CREDITS AND REFERENCES
+
+(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
+@#$#@#$#@
+default
+true
+0
+Polygon -7500403 true true 150 5 40 250 150 205 260 250
+
+airplane
+true
+0
+Polygon -7500403 true true 150 0 135 15 120 60 120 105 15 165 15 195 120 180 135 240 105 270 120 285 150 270 180 285 210 270 165 240 180 180 285 195 285 165 180 105 180 60 165 15
+
+arrow
+true
+0
+Polygon -7500403 true true 150 0 0 150 105 150 105 293 195 293 195 150 300 150
+
+box
+false
+0
+Polygon -7500403 true true 150 285 285 225 285 75 150 135
+Polygon -7500403 true true 150 135 15 75 150 15 285 75
+Polygon -7500403 true true 15 75 15 225 150 285 150 135
+Line -16777216 false 150 285 150 135
+Line -16777216 false 150 135 15 75
+Line -16777216 false 150 135 285 75
+
+bug
+true
+0
+Circle -7500403 true true 96 182 108
+Circle -7500403 true true 110 127 80
+Circle -7500403 true true 110 75 80
+Line -7500403 true 150 100 80 30
+Line -7500403 true 150 100 220 30
+
+butterfly
+true
+0
+Polygon -7500403 true true 150 165 209 199 225 225 225 255 195 270 165 255 150 240
+Polygon -7500403 true true 150 165 89 198 75 225 75 255 105 270 135 255 150 240
+Polygon -7500403 true true 139 148 100 105 55 90 25 90 10 105 10 135 25 180 40 195 85 194 139 163
+Polygon -7500403 true true 162 150 200 105 245 90 275 90 290 105 290 135 275 180 260 195 215 195 162 165
+Polygon -16777216 true false 150 255 135 225 120 150 135 120 150 105 165 120 180 150 165 225
+Circle -16777216 true false 135 90 30
+Line -16777216 false 150 105 195 60
+Line -16777216 false 150 105 105 60
+
+car
+false
+0
+Polygon -7500403 true true 300 180 279 164 261 144 240 135 226 132 213 106 203 84 185 63 159 50 135 50 75 60 0 150 0 165 0 225 300 225 300 180
+Circle -16777216 true false 180 180 90
+Circle -16777216 true false 30 180 90
+Polygon -16777216 true false 162 80 132 78 134 135 209 135 194 105 189 96 180 89
+Circle -7500403 true true 47 195 58
+Circle -7500403 true true 195 195 58
+
+circle
+false
+0
+Circle -7500403 true true 0 0 300
+
+circle 2
+false
+0
+Circle -7500403 true true 0 0 300
+Circle -16777216 true false 30 30 240
+
+cow
+false
+0
+Polygon -7500403 true true 200 193 197 249 179 249 177 196 166 187 140 189 93 191 78 179 72 211 49 209 48 181 37 149 25 120 25 89 45 72 103 84 179 75 198 76 252 64 272 81 293 103 285 121 255 121 242 118 224 167
+Polygon -7500403 true true 73 210 86 251 62 249 48 208
+Polygon -7500403 true true 25 114 16 195 9 204 23 213 25 200 39 123
+
+cylinder
+false
+0
+Circle -7500403 true true 0 0 300
+
+dot
+false
+0
+Circle -7500403 true true 90 90 120
+
+face happy
+false
+0
+Circle -7500403 true true 8 8 285
+Circle -16777216 true false 60 75 60
+Circle -16777216 true false 180 75 60
+Polygon -16777216 true false 150 255 90 239 62 213 47 191 67 179 90 203 109 218 150 225 192 218 210 203 227 181 251 194 236 217 212 240
+
+face neutral
+false
+0
+Circle -7500403 true true 8 7 285
+Circle -16777216 true false 60 75 60
+Circle -16777216 true false 180 75 60
+Rectangle -16777216 true false 60 195 240 225
+
+face sad
+false
+0
+Circle -7500403 true true 8 8 285
+Circle -16777216 true false 60 75 60
+Circle -16777216 true false 180 75 60
+Polygon -16777216 true false 150 168 90 184 62 210 47 232 67 244 90 220 109 205 150 198 192 205 210 220 227 242 251 229 236 206 212 183
+
+fish
+false
+0
+Polygon -1 true false 44 131 21 87 15 86 0 120 15 150 0 180 13 214 20 212 45 166
+Polygon -1 true false 135 195 119 235 95 218 76 210 46 204 60 165
+Polygon -1 true false 75 45 83 77 71 103 86 114 166 78 135 60
+Polygon -7500403 true true 30 136 151 77 226 81 280 119 292 146 292 160 287 170 270 195 195 210 151 212 30 166
+Circle -16777216 true false 215 106 30
+
+flag
+false
+0
+Rectangle -7500403 true true 60 15 75 300
+Polygon -7500403 true true 90 150 270 90 90 30
+Line -7500403 true 75 135 90 135
+Line -7500403 true 75 45 90 45
+
+flower
+false
+0
+Polygon -10899396 true false 135 120 165 165 180 210 180 240 150 300 165 300 195 240 195 195 165 135
+Circle -7500403 true true 85 132 38
+Circle -7500403 true true 130 147 38
+Circle -7500403 true true 192 85 38
+Circle -7500403 true true 85 40 38
+Circle -7500403 true true 177 40 38
+Circle -7500403 true true 177 132 38
+Circle -7500403 true true 70 85 38
+Circle -7500403 true true 130 25 38
+Circle -7500403 true true 96 51 108
+Circle -16777216 true false 113 68 74
+Polygon -10899396 true false 189 233 219 188 249 173 279 188 234 218
+Polygon -10899396 true false 180 255 150 210 105 210 75 240 135 240
+
+house
+false
+0
+Rectangle -7500403 true true 45 120 255 285
+Rectangle -16777216 true false 120 210 180 285
+Polygon -7500403 true true 15 120 150 15 285 120
+Line -16777216 false 30 120 270 120
+
+leaf
+false
+0
+Polygon -7500403 true true 150 210 135 195 120 210 60 210 30 195 60 180 60 165 15 135 30 120 15 105 40 104 45 90 60 90 90 105 105 120 120 120 105 60 120 60 135 30 150 15 165 30 180 60 195 60 180 120 195 120 210 105 240 90 255 90 263 104 285 105 270 120 285 135 240 165 240 180 270 195 240 210 180 210 165 195
+Polygon -7500403 true true 135 195 135 240 120 255 105 255 105 285 135 285 165 240 165 195
+
+line
+true
+0
+Line -7500403 true 150 0 150 300
+
+line half
+true
+0
+Line -7500403 true 150 0 150 150
+
+pentagon
+false
+0
+Polygon -7500403 true true 150 15 15 120 60 285 240 285 285 120
+
+person
+false
+0
+Circle -7500403 true true 110 5 80
+Polygon -7500403 true true 105 90 120 195 90 285 105 300 135 300 150 225 165 300 195 300 210 285 180 195 195 90
+Rectangle -7500403 true true 127 79 172 94
+Polygon -7500403 true true 195 90 240 150 225 180 165 105
+Polygon -7500403 true true 105 90 60 150 75 180 135 105
+
+plant
+false
+0
+Rectangle -7500403 true true 135 90 165 300
+Polygon -7500403 true true 135 255 90 210 45 195 75 255 135 285
+Polygon -7500403 true true 165 255 210 210 255 195 225 255 165 285
+Polygon -7500403 true true 135 180 90 135 45 120 75 180 135 210
+Polygon -7500403 true true 165 180 165 210 225 180 255 120 210 135
+Polygon -7500403 true true 135 105 90 60 45 45 75 105 135 135
+Polygon -7500403 true true 165 105 165 135 225 105 255 45 210 60
+Polygon -7500403 true true 135 90 120 45 150 15 180 45 165 90
+
+sheep
+false
+15
+Circle -1 true true 203 65 88
+Circle -1 true true 70 65 162
+Circle -1 true true 150 105 120
+Polygon -7500403 true false 218 120 240 165 255 165 278 120
+Circle -7500403 true false 214 72 67
+Rectangle -1 true true 164 223 179 298
+Polygon -1 true true 45 285 30 285 30 240 15 195 45 210
+Circle -1 true true 3 83 150
+Rectangle -1 true true 65 221 80 296
+Polygon -1 true true 195 285 210 285 210 240 240 210 195 210
+Polygon -7500403 true false 276 85 285 105 302 99 294 83
+Polygon -7500403 true false 219 85 210 105 193 99 201 83
+
+square
+false
+0
+Rectangle -7500403 true true 30 30 270 270
+
+square 2
+false
+0
+Rectangle -7500403 true true 30 30 270 270
+Rectangle -16777216 true false 60 60 240 240
+
+star
+false
+0
+Polygon -7500403 true true 151 1 185 108 298 108 207 175 242 282 151 216 59 282 94 175 3 108 116 108
+
+target
+false
+0
+Circle -7500403 true true 0 0 300
+Circle -16777216 true false 30 30 240
+Circle -7500403 true true 60 60 180
+Circle -16777216 true false 90 90 120
+Circle -7500403 true true 120 120 60
+
+train passenger car
+false
+0
+Polygon -7500403 true true 15 206 15 150 15 135 30 120 270 120 285 135 285 150 285 206 270 210 30 210
+Circle -16777216 true false 240 195 30
+Circle -16777216 true false 210 195 30
+Circle -16777216 true false 60 195 30
+Circle -16777216 true false 30 195 30
+Rectangle -16777216 true false 30 140 268 165
+Line -7500403 true 60 135 60 165
+Line -7500403 true 60 135 60 165
+Line -7500403 true 90 135 90 165
+Line -7500403 true 120 135 120 165
+Line -7500403 true 150 135 150 165
+Line -7500403 true 180 135 180 165
+Line -7500403 true 210 135 210 165
+Line -7500403 true 240 135 240 165
+Rectangle -16777216 true false 5 195 19 207
+Rectangle -16777216 true false 281 195 295 207
+Rectangle -13345367 true false 15 165 285 173
+Rectangle -2674135 true false 15 180 285 188
+
+tree
+false
+0
+Circle -7500403 true true 118 3 94
+Rectangle -6459832 true false 120 195 180 300
+Circle -7500403 true true 65 21 108
+Circle -7500403 true true 116 41 127
+Circle -7500403 true true 45 90 120
+Circle -7500403 true true 104 74 152
+
+triangle
+false
+0
+Polygon -7500403 true true 150 30 15 255 285 255
+
+triangle 2
+false
+0
+Polygon -7500403 true true 150 30 15 255 285 255
+Polygon -16777216 true false 151 99 225 223 75 224
+
+truck
+false
+0
+Rectangle -7500403 true true 4 45 195 187
+Polygon -7500403 true true 296 193 296 150 259 134 244 104 208 104 207 194
+Rectangle -1 true false 195 60 195 105
+Polygon -16777216 true false 238 112 252 141 219 141 218 112
+Circle -16777216 true false 234 174 42
+Rectangle -7500403 true true 181 185 214 194
+Circle -16777216 true false 144 174 42
+Circle -16777216 true false 24 174 42
+Circle -7500403 false true 24 174 42
+Circle -7500403 false true 144 174 42
+Circle -7500403 false true 234 174 42
+
+turtle
+true
+0
+Polygon -10899396 true false 215 204 240 233 246 254 228 266 215 252 193 210
+Polygon -10899396 true false 195 90 225 75 245 75 260 89 269 108 261 124 240 105 225 105 210 105
+Polygon -10899396 true false 105 90 75 75 55 75 40 89 31 108 39 124 60 105 75 105 90 105
+Polygon -10899396 true false 132 85 134 64 107 51 108 17 150 2 192 18 192 52 169 65 172 87
+Polygon -10899396 true false 85 204 60 233 54 254 72 266 85 252 107 210
+Polygon -7500403 true true 119 75 179 75 209 101 224 135 220 225 175 261 128 261 81 224 74 135 88 99
+
+wheel
+false
+0
+Circle -7500403 true true 3 3 294
+Circle -16777216 true false 30 30 240
+Line -7500403 true 150 285 150 15
+Line -7500403 true 15 150 285 150
+Circle -7500403 true true 120 120 60
+Line -7500403 true 216 40 79 269
+Line -7500403 true 40 84 269 221
+Line -7500403 true 40 216 269 79
+Line -7500403 true 84 40 221 269
+
+wolf
+false
+0
+Polygon -16777216 true false 253 133 245 131 245 133
+Polygon -7500403 true true 2 194 13 197 30 191 38 193 38 205 20 226 20 257 27 265 38 266 40 260 31 253 31 230 60 206 68 198 75 209 66 228 65 243 82 261 84 268 100 267 103 261 77 239 79 231 100 207 98 196 119 201 143 202 160 195 166 210 172 213 173 238 167 251 160 248 154 265 169 264 178 247 186 240 198 260 200 271 217 271 219 262 207 258 195 230 192 198 210 184 227 164 242 144 259 145 284 151 277 141 293 140 299 134 297 127 273 119 270 105
+Polygon -7500403 true true -1 195 14 180 36 166 40 153 53 140 82 131 134 133 159 126 188 115 227 108 236 102 238 98 268 86 269 92 281 87 269 103 269 113
+
+x
+false
+0
+Polygon -7500403 true true 270 75 225 30 30 225 75 270
+Polygon -7500403 true true 30 75 75 30 270 225 225 270
+@#$#@#$#@
+NetLogo 3D 6.0.4
+@#$#@#$#@
+need-to-manually-make-preview-for-this-model
+@#$#@#$#@
+@#$#@#$#@
+@#$#@#$#@
+@#$#@#$#@
+default
+0.0
+-0.2 0 0.0 1.0
+0.0 1 1.0 0.0
+0.2 0 0.0 1.0
+link direction
+true
+0
+Line -7500403 true 150 150 90 180
+Line -7500403 true 150 150 210 180
+
+agent-link
+0.0
+-0.2 0 0.0 1.0
+0.0 1 2.0 2.0
+0.2 0 0.0 1.0
+link direction
+true
+0
+Line -7500403 true 150 150 90 180
+Line -7500403 true 150 150 210 180
+
+bel
+0.0
+-0.2 0 0.0 1.0
+0.0 0 0.0 1.0
+0.2 0 0.0 1.0
+link direction
+true
+0
+
+imp
+0.0
+-0.2 0 0.0 1.0
+0.0 1 1.0 0.0
+0.2 0 0.0 1.0
+link direction
+true
+0
+Line -7500403 true 150 150 90 180
+Line -7500403 true 150 150 210 180
+
+sp-link
+0.0
+-0.2 0 0.0 1.0
+0.0 1 4.0 4.0
+0.2 0 0.0 1.0
+link direction
+true
+0
+Line -7500403 true 150 150 90 180
+Line -7500403 true 150 150 210 180
+@#$#@#$#@
+0
+@#$#@#$#@

@@ -1,0 +1,8 @@
+*.zip
+*.jar
+*.swp
+target
+*.pack.gz
+.project
+/csv/
+.bundledFiles

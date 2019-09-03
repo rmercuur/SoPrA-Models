@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parameters>
+
+	<parameter name="randomSeed" displayName="Default Random Seed" type="int" defaultValue="__NULL__" />
+
+	
+	<parameter name="EndTime" displayName="Simulation End Time (Ticks)" type="int" 
+						defaultValue="500" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+	/>
+	<parameter name="InterventionTime" displayName="Intervention Time (Ticks)" type="int" 
+						defaultValue="250" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+	/>
+	<parameter name="habitsDecrease" displayName="Habits Decrease" type="boolean" 
+						defaultValue="false" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+	/>
+	<parameter name="motivateMultipleAlternatives" displayName="Motivate Multiple Alternatives" type="boolean" 
+						defaultValue="false" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+	/>
+	<parameter name="getExtraAttention" displayName="getExtraAttention" type="double" 
+						defaultValue="4" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+	/>
+</parameters>
