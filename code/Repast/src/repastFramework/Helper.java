@@ -1,8 +1,10 @@
-package framework;
+package repastFramework;
+
 
 import com.google.common.primitives.Doubles;
 
 import repast.simphony.random.RandomHelper;
+import socialPracticeElements.StrengthValues;
 
 public final class Helper {
 	public static double normalRanged(double mean, double sd) {

@@ -10,67 +10,88 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.google.common.primitives.Doubles;
 
-import contextElements.*;
+import context.*;
 import socialPracticeElements.*;
-import framework.Helper;
-import framework.StrengthValues;
-import framework.CommutingContextBuilder;
 import repast.simphony.dataLoader.ContextBuilder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.random.RandomHelper;
-import socialPracticeElements.Activity;
-import socialPracticeElements.ContextElement;
+import repastFramework.CommutingContextBuilder;
+import repastFramework.Helper;
 
 public abstract class Agent extends ContextElement {
 	int ID;
-	CommutingContextBuilder myContextBuilder;
-	Table<ContextElement,Activity,StrengthValues> myHabitualTriggers;
-	Table<Activity,Value,StrengthValues> relatedValues;
-	Table<Activity,Value,StrengthValues> childParentRelation;
-	
-	Map<Value,StrengthValues> myAdheredValues;
 	List<Activity> myCandidates;
 	String chosenMode;
 	
-	Activity chosenAction;
+	//connections with social practice
+	CommutingContextBuilder myContextBuilder;
+	Table<ContextElement,Activity,StrengthValues> myHabitualConnections;
+	Table<Activity,Value,StrengthValues> myValueConnections;
+	Table<Activity,Activity,StrengthValues> myActivityConnections;
+	Map<Value,StrengthValues> myValuePriorities;
 	
+	//context connections
+	List<ContextElement> isInContextOf;
+	List<Resource> owns;
+	Location isBasedAt;
+	public Location isLocatedAt;
+	
+	//agent decision-making variables
+	Activity chosenActivity;
 	double habitRate;
+	static double habitThreshold;
+	double attentionalResources;
 	
+	double initialHabitStrength = 0.5; //TO BE SET BY MODELLER
 
+	
 	public Agent(int agentID, CommutingContextBuilder myContextBuilder) {
 		this.ID = agentID;
 		this.myContextBuilder = myContextBuilder;
 		myCandidates= myContextBuilder.activities;
 		
 		
-		relatedValues = HashBasedTable.create();
+		myValueConnections = HashBasedTable.create();
 		for(Value V: myContextBuilder.values) {
 			for(Activity AC: myContextBuilder.activities) {
-				relatedValues.put(AC, V, Helper.normalRangedStrengthValues(0.5,0.1));
+				myValueConnections.put(AC, V, Helper.normalRangedStrengthValues(0.5,0.1));
 			}
 		}
 		
-		myAdheredValues= new HashMap<Value,StrengthValues>();
+		myValuePriorities= new HashMap<Value,StrengthValues>();
 		for(Value V: myContextBuilder.values) {
-				myAdheredValues.put(V, Helper.normalRangedStrengthValues(1,0.5,0,2));
+				myValuePriorities.put(V, Helper.normalRangedStrengthValues(1,0.5,0,2));
 		}
 			
 		habitRate = getHabitRate(); //maybe this should be edited
 	}
-		
+	
+	/*Create HabitualConnections*/
 	//Creates Habitual Triggers After All Context Elements Have Been Added To the Simulation
 	public void createHabitualTriggers() {
-		myHabitualTriggers = HashBasedTable.create();
+		myHabitualConnections = HashBasedTable.create();
 		
 		for(ContextElement CE: myContextBuilder.contextElements) {
 			for(Activity AC: myContextBuilder.activities) {
-				myHabitualTriggers.put(CE, AC, new StrengthValues());
+				myHabitualConnections.put(CE, AC, new StrengthValues(initialHabitStrength));
 			}
 		}
 	}
 	
-
+	
+	/* Locating Agent */
+	public void locate(Location isLocatedAt) {
+		this.isLocatedAt = isLocatedAt;
+		isLocatedAt.add(this);
+	}
+	
+	public Location getLocation() {
+		return isLocatedAt;
+	}
+	
+	/* Decision-making */
+	
 	@ScheduledMethod(start = 1, interval = 1, priority = 10)
 	public abstract void sense();
 	
@@ -91,7 +112,7 @@ public abstract class Agent extends ContextElement {
 	/*Data-analysis*/
 	
 	public String getChosenAction() {
-		return chosenAction.name;
+		return chosenActivity.getName();
 	}
 	public int getID() {
 		return ID;

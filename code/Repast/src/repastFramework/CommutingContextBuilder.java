@@ -1,17 +1,20 @@
-package framework;
+package repastFramework;
+
+
 import java.awt.Container;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import agents.Agent;
-import agents.HabitualAgent;
-import contextElements.Bike;
-import contextElements.Car;
-import contextElements.Home;
-import contextElements.Location;
-import contextElements.Resource;
-import contextElements.Work;
+import agents.CommutingAgent;
+import context.CommutingBike;
+import context.CommutingCar;
+import context.CommutingHome;
+import context.Location;
+import context.Resource;
+import context.Timepoint;
+import context.CommutingWork;
 import repast.simphony.context.Context;
 import repast.simphony.context.DefaultContext;
 import repast.simphony.context.space.grid.GridFactory;
@@ -28,13 +31,16 @@ public class CommutingContextBuilder implements ContextBuilder<Object> {
 	public Context<Object> context;
 	public Grid<Object> grid;
 	public GridFactory myGridFactory;
-	public List<Agent> agents;
-	public List<Location> locations;
-	public List<Home> homes;
-	public List<Work> workPlaces;
 	public List<ContextElement> contextElements;
 	public List<Value> values;
+	public List<Agent> agents;
 	public List<Activity> activities;
+	public List<Location> locations;
+	public List<Resource> resources; //not used in current implementation - instead list of context-elements is used
+	public List<Timepoint> timepoints;  //not used in current implementation - instead list of context-elements is used
+	public List<CommutingHome> homes;
+	public List<CommutingWork> workPlaces;
+
 	public int agentID;
 	
 	
@@ -44,8 +50,8 @@ public class CommutingContextBuilder implements ContextBuilder<Object> {
 		agents=new ArrayList<Agent>();
 		agentID= 1;
 		locations=new ArrayList<Location>();
-		homes=new ArrayList<Home>();
-		workPlaces=new ArrayList<Work>();
+		homes=new ArrayList<CommutingHome>();
+		workPlaces=new ArrayList<CommutingWork>();
 		contextElements=new ArrayList<ContextElement>();
 		activities=new ArrayList<Activity>();
 		values=new ArrayList<Value>();
@@ -96,7 +102,7 @@ public class CommutingContextBuilder implements ContextBuilder<Object> {
 	public void addLocations() {
 		int homeCount = 3;
 		for (int i=0; i < homeCount; i++){
-			Home newHome=new Home();
+			CommutingHome newHome=new CommutingHome();
 			context.add(newHome);
 			locations.add(newHome);
 			homes.add(newHome);
@@ -104,7 +110,7 @@ public class CommutingContextBuilder implements ContextBuilder<Object> {
 		}
 		int workCount =3;
 		for (int i=0; i < workCount; i++){
-			Work newWork=new Work();
+			CommutingWork newWork=new CommutingWork();
 			context.add(newWork);
 			locations.add(newWork);
 			workPlaces.add(newWork);
@@ -122,7 +128,7 @@ public class CommutingContextBuilder implements ContextBuilder<Object> {
 		int familyCount =5;
 		int agentsPerFamilyCount =3;
 		for (int i=0; i < familyCount; i++){
-			Home familyHome = homes.get(RandomHelper.nextIntFromTo(0,homes.size()-1));
+			CommutingHome familyHome = homes.get(RandomHelper.nextIntFromTo(0,homes.size()-1));
 			List<Resource> familyResources =createFamilyResources(familyHome);
 			for (int j=0; j <agentsPerFamilyCount; j++) {
 				createAgent(familyHome, familyResources);
@@ -131,17 +137,17 @@ public class CommutingContextBuilder implements ContextBuilder<Object> {
 	}
 	
 	private List<Resource> createFamilyResources(Location myLocation) {
-		Car myCar =new Car();
+		CommutingCar myCar =new CommutingCar();
 		myCar.locate(myLocation);
 		contextElements.add(myCar);
 		List<Resource> familyResources = Arrays.asList(myCar);
 		return familyResources;
 	}
 
-	public void createAgent(Home familyHome, List<Resource> familyResources) {
+	public void createAgent(CommutingHome familyHome, List<Resource> familyResources) {
 		List<Resource> personalResources = createPersonalResources(familyHome);
-		Work myWork = workPlaces.get(RandomHelper.nextIntFromTo(0,workPlaces.size()-1));
-		Agent newAgent=new HabitualAgent(agentID, this, familyHome, myWork, familyResources, personalResources);
+		CommutingWork myWork = workPlaces.get(RandomHelper.nextIntFromTo(0,workPlaces.size()-1));
+		Agent newAgent=new CommutingAgent(agentID, this, familyHome, myWork, familyResources, personalResources);
 		agentID++;
 		newAgent.locate(familyHome);
 		context.add(newAgent);
@@ -150,7 +156,7 @@ public class CommutingContextBuilder implements ContextBuilder<Object> {
 	}
 
 	private List<Resource> createPersonalResources(Location myLocation) {
-		Bike myBike = new Bike();
+		CommutingBike myBike = new CommutingBike();
 		myBike.locate(myLocation);
 		contextElements.add(myBike);
 		List<Resource> personalResources = Arrays.asList(myBike);

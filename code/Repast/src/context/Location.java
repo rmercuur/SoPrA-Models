@@ -1,4 +1,4 @@
-package contextElements;
+package context;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +11,12 @@ public class Location extends ContextElement {
 		return locatedHere.add(e);
 	}
 
-
-
 	public List<ContextElement> getLocatedHere() {
 		return locatedHere;
 	}
 	
 	public Location() {
 		locatedHere=new ArrayList<ContextElement>();
-		locate(this); //locate yourself at yourself
+		locatedHere.add(this); //locate the location at itself
 	}
 }

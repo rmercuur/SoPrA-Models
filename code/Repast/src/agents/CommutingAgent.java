@@ -6,24 +6,23 @@ import java.util.List;
 
 import com.google.common.primitives.Doubles;
 
-import contextElements.Home;
-import contextElements.Resource;
-import contextElements.Work;
-import framework.Helper;
-import framework.StrengthValues;
-import framework.CommutingContextBuilder;
+import context.CommutingHome;
+import context.Resource;
+import context.CommutingWork;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.random.RandomHelper;
+import repastFramework.CommutingContextBuilder;
+import repastFramework.Helper;
 import socialPracticeElements.Activity;
 import socialPracticeElements.ContextElement;
+import socialPracticeElements.StrengthValues;
 import socialPracticeElements.Value;
 
-public class HabitualAgent extends Agent{
+public class CommutingAgent extends Agent{
 
 	static double habitThreshold = 0.5;
-	List<ContextElement> myPerformanceContext;
 	
-	public HabitualAgent(int agentID, CommutingContextBuilder myContextBuilder, Home familyHome, Work myWork,
+	public CommutingAgent(int agentID, CommutingContextBuilder myContextBuilder, CommutingHome familyHome, CommutingWork myWork,
 			List<Resource> familyResources, List<Resource> personalResources) {
 		super(agentID, myContextBuilder);
 		
@@ -32,16 +31,16 @@ public class HabitualAgent extends Agent{
 		myResources =new ArrayList<Resource>();
 		myResources.addAll(familyResources);
 		myResources.addAll(personalResources);
-		myPerformanceContext =new ArrayList<ContextElement>();
+		isInContextOf =new ArrayList<ContextElement>();
 	}
 	
-	Home myHome;
-	Work myWork;
+	CommutingHome myHome;
+	CommutingWork myWork;
 	List<Resource> myResources;
 	
 	public void sense() {
-		myPerformanceContext.clear();
-		myPerformanceContext.addAll(isLocatedAt.getLocatedHere());
+		isInContextOf.clear();
+		isInContextOf.addAll(isLocatedAt.getLocatedHere());
 	}
 	
 	public void decide() {
@@ -55,20 +54,20 @@ public class HabitualAgent extends Agent{
 		}
 		
 		if (currentCandidates.size() ==0) {
-			chosenAction = intentionalDecision(myCandidates);
+			chosenActivity = intentionalDecision(myCandidates);
 			chosenMode = "Intentional0";
 		}
 		if (currentCandidates.size() ==1) {
-			chosenAction = currentCandidates.get(0);
+			chosenActivity = currentCandidates.get(0);
 			chosenMode = "Habitual";
 		}
 		if (currentCandidates.size() > 1) {
 			if (currentCandidates.size() == myCandidates.size()) { //the case where they are all habitual somehow;
-				chosenAction = intentionalDecision(currentCandidates);
+				chosenActivity = intentionalDecision(currentCandidates);
 				chosenMode = "IntentionalAll";
 			}
 			else {
-				chosenAction = intentionalDecision(currentCandidates);
+				chosenActivity = intentionalDecision(currentCandidates);
 				chosenMode = "IntentionalFiltered";
 			}
 		}
@@ -86,18 +85,18 @@ public class HabitualAgent extends Agent{
 	}
 	
 	public void update() {
-		for(ContextElement CE:myPerformanceContext) {
+		for(ContextElement CE:isInContextOf) {
 			for(Activity AC:myCandidates) {
-				double oldHabitStrength = myHabitualTriggers.get(CE, AC).getStrength();
+				double oldHabitStrength = myHabitualConnections.get(CE, AC).getStrength();
 				double newHabitStrength = 0;
-				if (AC == chosenAction) {
+				if (AC == chosenActivity) {
 					newHabitStrength = ((1-habitRate) *oldHabitStrength) + (habitRate *1);
 				} else {
 					newHabitStrength =  RunEnvironment.getInstance().getParameters().getBoolean("habitsDecrease") ?
 							((1-habitRate) * oldHabitStrength) + (habitRate * 0):
 								oldHabitStrength;
 				}
-				myHabitualTriggers.put(CE, AC, new StrengthValues(newHabitStrength));
+				myHabitualConnections.put(CE, AC, new StrengthValues(newHabitStrength));
 			}
 		}
 	}
@@ -150,12 +149,12 @@ public class HabitualAgent extends Agent{
 		double multiplierCar = 
 			"takeCar".equals(candidate.getName())  
 			? 1.5:1;
-		return multiplierCar* multiplierWalk* multiplierBike* relatedValues.get(candidate, value).getStrength() * myAdheredValues.get(value).getStrength();
+		return multiplierCar* multiplierWalk* multiplierBike* myValueConnections.get(candidate, value).getStrength() * myValuePriorities.get(value).getStrength();
 	}
 	
 	private double calculateHabitStrength(Activity AC) {
-		return myPerformanceContext.stream().
-				mapToDouble(i -> myHabitualTriggers.get(i,AC).getStrength()).average().getAsDouble();
+		return isInContextOf.stream().
+				mapToDouble(i -> myHabitualConnections.get(i,AC).getStrength()).average().getAsDouble();
 	}
 
 	
