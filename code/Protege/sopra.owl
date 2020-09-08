@@ -21,166 +21,166 @@
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnectionFrom -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnectionFrom -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnectionFrom">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnectionFrom">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnectionTo -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnectionTo -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnectionTo">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnectionTo">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Activity"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionFrom -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValueConnectionFrom -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionFrom">
-        <rdfs:subPropertyOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionTo"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionTo -->
-
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionTo">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValueConnectionFrom">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Value"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriorityToValue -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValueConnectionTo -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriorityToValue">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValueConnectionTo">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Activity"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasChildParentRelation -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValuePriorityToValue -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasChildParentRelation">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValuePriorityToValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValuePriority"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#hasActivityConnection -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#hasActivityConnection">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ActivityConnection"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasHabitualConnection -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#hasHabitualConnection -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasHabitualConnection">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#hasHabitualConnection">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnection"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasValueConnection -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#hasValueConnection -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasValueConnection">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#hasValueConnection">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValueConnection"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasValuePriority -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#hasValuePriority -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasValuePriority">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#hasValuePriority">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValuePriority"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isBasedAt -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#isBasedAt -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isBasedAt">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#isBasedAt">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Location"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isInContextOf -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#isInContextOf -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isInContextOf">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#isInContextOf">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isLocatedAt -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#isLocatedAt -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isLocatedAt">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#isLocatedAt">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Resource"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Location"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#owns -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#owns -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#owns">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#owns">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Resource"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#withChild -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#withChild -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#withChild">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#withChild">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ActivityConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Activity"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#withParent -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#withParent -->
 
-    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#withParent">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#withParent">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
-        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ActivityConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Activity"/>
     </owl:ObjectProperty>
     
 
@@ -196,74 +196,79 @@
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Activity -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity">
-        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
-        <owl:disjointWith rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Activity">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
     </owl:Class>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ActivityConnection -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ActivityConnection"/>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent">
-        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
     </owl:Class>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnection -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnection"/>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Location -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location">
-        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Location">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
     </owl:Class>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Resource -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource">
-        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Resource">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
     </owl:Class>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Timepoint -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Timepoint -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Timepoint">
-        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Timepoint">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
     </owl:Class>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Value -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Value"/>
     
 
 
-    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValueConnection -->
 
-    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValueConnection"/>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValuePriority -->
+
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValuePriority"/>
     
 
 
@@ -278,21 +283,22 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location"/>
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource"/>
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Timepoint"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Activity"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Agent"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Location"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Resource"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Timepoint"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value"/>
-            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ActivityConnection"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ContextElement"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#HabitualConnection"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#Value"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValueConnection"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl#ValuePriority"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
