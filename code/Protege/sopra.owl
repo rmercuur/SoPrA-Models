@@ -6,7 +6,7 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51"/>
+    <owl:Ontology rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2"/>
     
 
 
@@ -21,154 +21,166 @@
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#AdheredValueToValue -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnectionFrom -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#AdheredValueToValue">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#AdheredValue"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Value"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTriggerBy -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTriggerBy">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTrigger"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ContextElement"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTriggers -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTriggers">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTrigger"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Activity"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HasChildOfActivityTo -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HasChildOfActivityTo">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasChildOfActivity"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ChildParentRelation"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HasHabitualTriggerTo -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HasHabitualTriggerTo">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHabitualTrigger"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTrigger"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HasHasAdheredValueTo -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HasHasAdheredValueTo">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasAdheredValue"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#AdheredValue"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HasRelatedValueTo -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HasRelatedValueTo">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnectionFrom">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasRelatedValue"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValue"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValueWithActivity -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnectionTo -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValueWithActivity">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnectionTo">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValue"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Activity"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValueWithValue -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionFrom -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValueWithValue">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionFrom">
+        <rdfs:subPropertyOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionTo -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValueConnectionTo">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValue"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Value"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHasAdheredValue -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriorityToValue -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHasAdheredValue">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriorityToValue">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Agent"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasAdheredValue"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHasChildOfActivity -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasChildParentRelation -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHasChildOfActivity">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Agent"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasChildOfActivity"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHasHabitualTrigger -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHasHabitualTrigger">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Agent"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHabitualTrigger"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHasRelatedValue -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHasRelatedValue">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasChildParentRelation">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Agent"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasRelatedValue"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#withChild -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasHabitualConnection -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#withChild">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasHabitualConnection">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ChildParentRelation"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Activity"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#withParent -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasValueConnection -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#withParent">
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasValueConnection">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ChildParentRelation"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Activity"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasValuePriority -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#hasValuePriority">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isBasedAt -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isBasedAt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isInContextOf -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isInContextOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isLocatedAt -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#isLocatedAt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#owns -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#owns">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#withChild -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#withChild">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#withParent -->
+
+    <owl:ObjectProperty rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#withParent">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
+        <rdfs:range rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
     </owl:ObjectProperty>
     
 
@@ -184,80 +196,74 @@
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Activity -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Activity">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ContextElement"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Agent"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+        <owl:disjointWith rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#AdheredValue -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#AdheredValue"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Agent -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Agent">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ContextElement"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ChildParentRelation -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ChildParentRelation"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ContextElement -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ContextElement"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTrigger -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTrigger"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValue -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValue"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Value -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Timepoint -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Value"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Timepoint">
+        <rdfs:subClassOf rdf:resource="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+    </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasAdheredValue -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasAdheredValue"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value"/>
     
 
 
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasChildOfActivity -->
+    <!-- https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasChildOfActivity"/>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHabitualTrigger -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHabitualTrigger"/>
-    
-
-
-    <!-- http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasRelatedValue -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasRelatedValue"/>
+    <owl:Class rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority"/>
     
 
 
@@ -272,27 +278,21 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#AdheredValue"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ChildParentRelation"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ContextElement"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTrigger"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValue"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Value"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Activity"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Agent"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Location"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Resource"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Timepoint"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#AdheredValue"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ChildParentRelation"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#ContextElement"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#HabitualTrigger"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#RelatedValue"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#Value"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasAdheredValue"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasChildOfActivity"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasHabitualTrigger"/>
-            <rdf:Description rdf:about="http://www.semanticweb.org/rijk/ontologies/2019/7/untitled-ontology-51#hasRelatedValue"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ActivityConnection"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ContextElement"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#HabitualConnection"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#Value"/>
+            <rdf:Description rdf:about="https://raw.githubusercontent.com/rmercuur/SoPrA-Models/master/code/Protege/sopra.owl?token=ABV7LMYZ3AIFH2YZU42X3ZS7K6CH2#ValuePriority"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
