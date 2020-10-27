@@ -1,1 +1,5 @@
 /bin/
+*.log
+/*.txt
+!model_description.txt
+!license.txt
