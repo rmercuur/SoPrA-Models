@@ -1,5 +1,5 @@
 /bin/
 *.log
-/*.txt
+/code/SoPrARepast/*.txt
 !model_description.txt
 !license.txt
