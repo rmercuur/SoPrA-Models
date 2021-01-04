@@ -1,0 +1,7 @@
+There are three Netlogo files:
+- SoPrANetlogoTemplate Captures the UML by implementing classes and assocations as
+breeds and links. Can be used as the basis for an ABM.
+- SoPrANetlogoSetupExample Shows how to use set-up the model for a use case on commuting
+by using several input files.
+- SoPrANetlogoFullModelExample Shows how SoPrA enables a ABS researcher to study
+habits. This version contains both a setup and a decision-making algorithm.
